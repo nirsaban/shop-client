@@ -1,0 +1,161 @@
+{
+    "CREATE_CATEGORY": {
+        "fields": [{
+            "name": "category_name",
+            "type": "text"
+        }],
+        "title": "Add new Category"
+    },
+    "CREATE_ABOUT": {
+        "fields": [{
+                "name": "content",
+                "type": "textarea"
+            },
+            {
+                "name": "images",
+                "type": "file"
+            }
+        ],
+        "title": "Create About Section"
+    },
+    "CREATE_PRODUCT": {
+        "fields": [{
+                "name": "category_id",
+                "type": "select",
+                "multiple": false
+            },
+            {
+                "name": "product_name",
+                "type": "text"
+            },
+            {
+                "name": "price",
+                "type": "number"
+            },
+            {
+                "name": "images",
+                "type": "file"
+            },
+            {
+                "name": "description",
+                "type": "text"
+            }
+        ],
+        "title": "Create Product"
+    },
+    "CREATE_PACKAGE": {
+        "fields": [{
+                "name": "package_name",
+                "type": "text"
+            },
+            {
+                "name": "products",
+                "type": "select",
+                "multiple": true
+            },
+            {
+                "name": "rate",
+                "type": "number",
+                "info": "maximum 5 rates"
+            },
+            {
+                "name": "description",
+                "type": "text"
+            },
+            {
+                "name": "price",
+                "type": "number"
+            }
+        ],
+        "title": "Create Package"
+    },
+    "LOGIN": {
+        "fields": [{
+                "name": "email",
+                "type": "email",
+                "icon": "envelope"
+            },
+            {
+                "name": "password",
+                "type": "password",
+                "icon": "lock"
+            }
+        ],
+        "title": "Login to your account"
+    },
+    "CONTACT": {
+        "fields": [{
+                "name": "name",
+                "type": "text",
+                "icon": "user-tag"
+            },
+            {
+                "name": "email",
+                "type": "email",
+                "icon": "envelope"
+            },
+            {
+                "name": "subject",
+                "type": "text",
+                "icon": "tag"
+            },
+
+            {
+                "name": "message",
+                "type": "textarea",
+                "icon": "pencil-alt"
+            },
+            {
+                "name": "phone",
+                "type": "tel",
+                "icon": "phone-volume"
+            }
+        ]
+    },
+    "REGISTER": {
+        "fields": [{
+                "name": "email",
+                "type": "email",
+                "icon": "envelope"
+            },
+            {
+                "name": "password",
+                "type": "password",
+                "icon": "lock"
+            },
+            {
+                "name": "full_name",
+                "type": "text",
+                "icon": "user-tag"
+            }
+        ],
+        "title": "Create New account"
+    },
+    "CREATE_ORDER": {
+        "fields": [{
+                "name": "date",
+                "type": "date",
+                "icon": "calendar-alt"
+            },
+
+            {
+                "name": "phone",
+                "type": "tel",
+                "icon": "phone-volume"
+            },
+            {
+                "name": "more_data",
+                "type": "text",
+                "icon": "info"
+
+            },
+            {
+                "name": "address",
+                "type": "select",
+                "multiple": false,
+                "icon": "search-location"
+            }
+        ],
+        "title": "Save New Order"
+    }
+}

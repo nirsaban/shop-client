@@ -1,0 +1,32 @@
+{
+    "user": {
+        "LOGIN": "user/login",
+        "REGISTER": "user/register",
+        "LOGOUT": "user/logout"
+    },
+    "contact": {
+        "CREATE": "contact/create"
+    },
+    "category": {
+        "CREATE_CATEGORY": "category/create",
+        "DELETE_CATEGORY": "category/delete",
+        "GET_CATEGORIES": "category/get"
+    },
+    "product": {
+        "CREATE_PRODUCT": "product/create",
+        "GET_PRODUCTS": "product/get"
+    },
+    "package": {
+        "CREATE_PACKAGE": "package/create",
+        "GET_PACKAGES": "package/get"
+    },
+    "about": {
+        "CREATE_ABOUT": "about/create",
+        "GET_ABOUT": "about/get"
+    },
+    "order": {
+        "CREATE_ORDER": "order/create",
+        "CITIES": "https://countriesnow.space/api/v0.1/countries/cities"
+    }
+
+}

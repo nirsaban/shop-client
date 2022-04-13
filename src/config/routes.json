@@ -1,0 +1,43 @@
+[
+    [{
+            "main": "Account",
+            "icon": "fas fa-user"
+        },
+        {
+            "path": "/login",
+            "name": "Login",
+            "icon": "fas fa-sign-in-alt",
+            "switch": {
+                "path": "/logout",
+                "name": "Logout",
+                "icon": "fas fa-sign-out-alt"
+            }
+        },
+        {
+            "path": "/orders",
+            "name": "My Orders",
+            "icon": "fas fa-list-ul"
+        },
+        {
+            "path": "/checkout",
+            "name": "Check Out",
+            "icon": "fas fa-cart-arrow-down"
+        }
+    ],
+    {
+        "path": "/",
+        "name": "About",
+        "icon": "fas fa-info"
+    },
+    {
+        "path": "/",
+        "name": "Contact",
+        "icon": "fas fa-phone-square-alt"
+    },
+    {
+        "path": "/package",
+        "name": "Packages",
+        "icon": "fas fa-box-open"
+    }
+
+]

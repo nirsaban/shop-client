@@ -1,0 +1,21 @@
+[{
+        "path": "/dashboard/product",
+        "name": "CREATE PRODUCT",
+        "icon": "fas fa-info"
+    },
+    {
+        "path": "/dashboard/category",
+        "name": "CREATE CATEGORY",
+        "icon": "fas fa-info"
+    },
+    {
+        "path": "/dashboard/package",
+        "name": "CREATE PACKAGE",
+        "icon": "fas fa-info"
+    },
+    {
+        "path": "/dashboard/about",
+        "name": "CREATE ABOUT",
+        "icon": "fas fa-info"
+    }
+]
