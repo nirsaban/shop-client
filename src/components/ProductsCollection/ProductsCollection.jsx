@@ -1,8 +1,15 @@
 import React from 'react';
 import Product from '../product/product'
-import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBRow, MDBCol,MDBBadge } from 'mdb-react-ui-kit';
+import { Carousel } from 'react-bootstrap';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import Carousel from 'react-multi-carousel';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 import 'react-multi-carousel/lib/styles.css';
 const responsive = {
     desktop: {
@@ -21,35 +28,59 @@ const responsive = {
       slidesToSlide: 1 // optional, default to 1.
     }
   };
-
+const colors = ["dark","secondary","danger","warning","success"];
 const ProductsCollection = ({ products }) => {
 
-    console.log(products)
     return(
-
+        
         products.map((productRow, index) => {
             return (
                 <>
-                <h3>
-                   {productRow[0].cat_name}
-                </h3>
-                <Carousel
-                title  = "test"
-                responsive={responsive}
+                <div className='d-flex justify-content-center h3'> 
+                <MDBBadge tag="a" color={colors[Math.floor(Math.random() * colors.length)]} >
+                 
+                    {productRow[0].cat_name}
+                
+                </MDBBadge>
+                </div>
+                <Swiper 
+                        breakpoints={{
+          // when window width is >= 640px
+          640: {
+            width: 640,
+            slidesPerView: 1,
+          },
+          // when window width is >= 768px
+            768: {
+            width: 768,
+            slidesPerView: 2,
+             },
+             }}
+                 modules={[Navigation, Pagination, Scrollbar, A11y]}
+                 spaceBetween={50}
+                 slidesPerView={1}
+                 navigation
+                 pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+
                 >
                
                     {
                         productRow.map((product, x) => {
-                            
+                               
                             return (
-                                <MDBCol  key={x} className='mb-3 d-flex justify-content-center'>
+                                <SwiperSlide className='d-flex justify-content-center'>
+                                <MDBCol  key={x} className='mb-3 d-flex justify-content-center direction-rtl ' dir="rtl">
                                     <Product product={product} />
                                 </MDBCol>
+                                </SwiperSlide>
                             )
                         })
                     }
                
-                </Carousel>
+                </Swiper>
             </>
             )
         })

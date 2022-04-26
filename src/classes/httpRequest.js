@@ -17,6 +17,9 @@ class httpRequest {
     async get(params) {
         return await Axios.get(this.path, {...params })
     }
+    async delete(id){
+        return await Axios.delete(this.path,{data:{id}})
+    }
 }
 
 export default httpRequest

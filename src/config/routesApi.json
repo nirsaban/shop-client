@@ -14,11 +14,13 @@
     },
     "product": {
         "CREATE_PRODUCT": "product/create",
-        "GET_PRODUCTS": "product/get"
+        "GET_PRODUCTS": "product/get",
+        "DELETE_PRODUCT": "product/delete"
     },
     "package": {
         "CREATE_PACKAGE": "package/create",
-        "GET_PACKAGES": "package/get"
+        "GET_PACKAGES": "package/get",
+        "DELETE_PACKAGE": "package/delete"
     },
     "about": {
         "CREATE_ABOUT": "about/create",

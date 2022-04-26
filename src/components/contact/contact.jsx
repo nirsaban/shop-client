@@ -3,12 +3,14 @@ import jsonForm from '../../config/formsSchema.json';
 import FormComponent from '../../ui/form/form';
 import CardComponent from '../../ui/card/card'
 import { Form, Button, Col, Container, Row, Card } from 'react-bootstrap';
+import { FacebookLoginButton ,InstagramLoginButton} from "react-social-login-buttons";
+import FloatingWhatsApp from 'react-floating-whatsapp'
 import {
   MDBContainer,
   MDBRow,
   MDBCol,
- 
-  MDBIcon,
+  MDBBadge,
+    MDBIcon,
   MDBInput,
 } from "mdbreact";
 import httpRequest from '../../classes/httpRequest'
@@ -37,7 +39,16 @@ const Contact = () => {
     <Container fluid  id = "contact">
     <MDBRow className = "d-flex justify-content-center mt-3">
     <MDBCol md="8">
+    
     <p className="h2 text-center mb-4">כתבו לנו</p>
+    <div className='d-flex justify-content-center '>
+
+    <div className='col-md-2 d-flex justify-content-center'>
+                 <FacebookLoginButton onClick={() => window.location.href ="https://www.facebook.com/%D7%9E%D7%91%D7%A8%D7%95%D7%A7-%D7%A2%D7%9C%D7%99%D7%9B%D6%BC-%D7%97%D7%99%D7%A0%D7%94-111882314674808/"}  className = "round-3 col-sm-3 rounded-circle text-center">  </FacebookLoginButton>
+                 <InstagramLoginButton onClick={() => window.location.href  = "https://instagram.com/mabruk_alik_hina?igshid=YmMyMTA2M2Y="} className = "round-3 col-sm-3 rounded-circle"> </InstagramLoginButton>
+   
+    </div>
+    </div>
     <div className="grey-text">
     <FormComponent 
                 inputs = {jsonForm.CONTACT.fields} 
@@ -46,15 +57,33 @@ const Contact = () => {
                 error = {state['error']}
         />
         </div>
-    <div className="text-center">
+    <div className="text-center d-flex flex-column align-items-center">
               <Button outline color="dark" onClick = {handleSubmit}>
                 Send
                 <MDBIcon far icon="paper-plane" color = "dark" className="ml-1" />
+                
               </Button>
+               
     </div>
     </MDBCol>
     </MDBRow>
+    <FloatingWhatsApp
+      phoneNumber='0525937260'
+      allowClickAway
+      onClick =  { () =>  window.location.href = "https://wa.link/yb6o11"}
+      notification
+      notificationSound
+      notificationDelay={30000}
+      darkMode
+      defaultMessage={"היי יש לי שאלה :)"}ת
+      accountName=" מברוכ עליכ"
+    placeholder='כתוב.י לנו משהו ☺'
+    chatMessage = "אנחנו כאן לשירותך"
+    statusMessage = {"Typically replies within 1/2 hour"}
+
+    />
     </Container>
+    
     )
 }
 

@@ -75,7 +75,7 @@ const Home = () => {
 
             {
                 state.products.length > 0 ?
-                    <ProductsCollection products={filterData }  />
+                    <ProductsCollection products={filterData }  className = "d-flex justify-content-center" />
                     : null
             }
            

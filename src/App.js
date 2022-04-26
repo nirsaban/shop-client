@@ -29,7 +29,8 @@ import Home from './pages/home.page'
 import Header  from './components/header/header';
 import Checkout from './pages/checkout/checkout.component';
 import FooterPage from './components/footer/footer';
-import AlertComp from  './components/alert/alert'
+import AlertComp from  './components/alert/alert';
+
 const publicRoutes = [
   { path: '/login', component: <Login/> },
   { path: '/', component: <Home /> },

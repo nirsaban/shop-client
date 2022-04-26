@@ -23,7 +23,7 @@ const SearchTool = ({handleSearch}) => {
 
     return (
 
-        <MDBNavbar expand='sm' light bgColor='light' className='m-5 col-md-3'>
+        <MDBNavbar expand='sm' light bgColor='light' className='m-5 col-md-3 col-sm-2'>
             <MDBContainer fluid className='d-flex justify-content-between'>
                 <div>
                     <LinkContainer to={"/"}>

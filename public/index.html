@@ -23,7 +23,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Mabruk Alic</title>
+    <title>מברוכ עליכ </title>
 </head>
 
 <body>
@@ -39,6 +39,22 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <style>
+        @media all and (min-width:321px) and (max-width: 480px) {
+            /* put your css styles in here */
+            .d-none,
+            .d-md-block {
+                font-size: 12px;
+                display: block !important;
+            }
+        }
+        
+        html,
+        body,
+        * {
+            direction: rtl;
+        }
+    </style>
 </body>
 
 </html>

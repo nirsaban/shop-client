@@ -17,7 +17,7 @@ const Product = ({ product, addItem }) => {
     const [productItem, setProductItem] = useState(product);
     return (
         <>
-            <MDBCard alignment='left' style={{ maxWidth: '17rem' }} className='shadow-lg rounded-2 border-bottom-0'>
+            <MDBCard alignment='left' style={{ maxWidth: '17rem' }} className='shadow-lg rounded-2 border-bottom-0 '>
                 <MDBCarousel showControls>
                     <MDBCarouselInner>
                         {
@@ -27,8 +27,7 @@ const Product = ({ product, addItem }) => {
                                         <MDBCarouselItem className={index == 0 ? 'active' : ""} key={index}  >
                                             <MDBCarouselElement
                                                 className="d-block w-100 h-100 product-img pattern-2"
-                                                src={`${image}`}
-                                                
+                                                src={`${image}`}     
                                             />
                                         </MDBCarouselItem>
                                     )
@@ -42,7 +41,7 @@ const Product = ({ product, addItem }) => {
                     <MDBCardText>
                         {product.description} <br />
                         <span className="badge  bg-primary">
-                        {product.price} $
+                        {/* {product.price} $ */}
                          </span>
                       
                     </MDBCardText>

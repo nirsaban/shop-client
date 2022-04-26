@@ -157,5 +157,32 @@
             }
         ],
         "title": "Save New Order"
+    },
+    "CREATE_SOCIAL_LINKS": {
+        "fields": [{
+                "name": "instagram",
+                "type": "text",
+                "icon": "instagram"
+            },
+
+            {
+                "name": "phone",
+                "type": "tel",
+                "icon": "phone-volume"
+            },
+            {
+                "name": "more_data",
+                "type": "text",
+                "icon": "info"
+
+            },
+            {
+                "name": "address",
+                "type": "select",
+                "multiple": false,
+                "icon": "search-location"
+            }
+        ],
+        "title": "Save New Order"
     }
 }

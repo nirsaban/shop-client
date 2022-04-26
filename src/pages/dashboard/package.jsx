@@ -6,14 +6,14 @@ import CardComponent from '../../ui/card/card'
 import { Form, Button, Col, Container, Row, Card } from 'react-bootstrap';
 import httpRequest from '../../classes/httpRequest'
 import { useHistory } from 'react-router-dom';
-import {withRouter, RouteComponentProps} from "react-router";
-import { MDBTable, MDBTableHead, MDBTableBody, MDBIcon } from 'mdb-react-ui-kit';
+import { withRouter, RouteComponentProps } from "react-router";
 import EditTable from '../../components/edit-table/edit-table'
-const Package = ({match}) => {
+const Package = ({ match }) => {
     const [state, setState] = useState({})
     const history = useHistory()
-    const [edit, setEdit] = useState({})
+    const [edit, setEdit] = useState(false)
     useEffect(() => {
+        
         (async () => {
             try {
                 const response = await (new httpRequest(apiRoutes.product.GET_PRODUCTS)).get();
@@ -27,21 +27,23 @@ const Package = ({match}) => {
                                 price
                             }
                         }),
-                        packagesList:responsePackages.data
+                        packagesList: responsePackages.data.result
                     }))
                 } else {
                     history.push("/dashboard/category")
                 }
-            } catch(err) {
-                console.log(err)
-                history.push("/login")
+            } catch (err) {
+               
             }
 
         })()
     }, [])
+    useEffect(() => {
+
+    }, [edit])
     const handleChange = (e) => {
         const { name, value } = e.target
-       
+
         setState(p => ({ ...p, [name]: value }))
     }
     const handleChangeSelect = (value, name) => {
@@ -49,7 +51,8 @@ const Package = ({match}) => {
         calculatePrice(productIds)
         setState(p => ({ ...p, [name]: productIds }))
     }
-
+    
+    
     const calculatePrice = (ids) => {
         let totalPrice = state.productsList.filter(p => ids.includes(p.value)).map(p => p.price).reduce((x, y) => parseInt(x) + parseInt(y))
         setState(p => ({ ...p, ["totalPrice"]: totalPrice }))
@@ -58,25 +61,21 @@ const Package = ({match}) => {
         e.preventDefault();
         try {
             const response = await (new httpRequest(apiRoutes.package.CREATE_PACKAGE).post(state))
-            setState(p => ({ ...p, ["error"]: '' }))
+            setState(p => ({ ...p, ["error"]: '',packagesList:response.data.result }))
         } catch (error) {
             setState(p => ({ ...p, ["error"]: error.response.data }))
         }
     }
-    if (!state['productsList']) {
-        return (
-            <div>steal loading</div>
-        )
-    }
+  
     return (
         <>
             <Container fluid>
                 <Row className="d-flex justify-content-center mt-3">
 
                     <Col md="4">
-                            
+
                         <CardComponent
-                            title={jsonForm.CREATE_PACKAGE.title }
+                            title={jsonForm.CREATE_PACKAGE.title}
                             body={
                                 <FormComponent
                                     inputs={jsonForm.CREATE_PACKAGE.fields}
@@ -88,13 +87,13 @@ const Package = ({match}) => {
                                 <>
                                     <div className='d-flex flex-column align-items-center'>
                                         <Button onClick={handleSubmit}>SUBMIT</Button>
-                                       
-                                       
+
+
                                     </div>
 
                                     <div className='d-flex justify-content-center'>
                                         <small className='text-danger'>{state['error']}</small>
-                                             <span className="text-success"> {state['totalPrice']} $</span>
+                                        <span className="text-success"> {state['totalPrice']} $</span>
                                     </div>
                                 </>
                             }
@@ -102,43 +101,19 @@ const Package = ({match}) => {
                     </Col>
                 </Row>
                 <Row>
-                <MDBTable striped className='border' responsive>
-            <MDBTableHead>
-                <tr>
-                    {Object.keys(state.packagesList).map(col => {
-                        return (
-                            <th key={col} className='text-center'>{col}</th>
-                        )
-                    })}
-                    <th>EDIT</th>
-                    <th>DELETE</th>
-                </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-                {Object.values(state.packagesList).map((row, index) => {
-                    return (
-                        <tr>
-
-                            {
-                                Object.values(row).map((td,x) => {
-                                    if(!Array.isArray(td)){
-                                        
-                                    let content = !edit[index] ? (<td >{td}</td>) :
-                                        (<td><input onChange={(event) => handleChange(event ,index,Object.keys(row)[x])}
-                                         className="w-50" 
-                                         type={!isNaN(td) ? "number" : "text"} defaultValue={td}/></td>)
-                                    return (
-                                        content
-                                    )
-                                    }
-                                })
-                            }
-                            <td><MDBIcon icon="trash" ></MDBIcon></td>
-                        </tr>
-                    )
-                })}
-            </MDBTableBody>
-        </MDBTable>
+                {
+                    state['packagesList'] &&  state['packagesList']?.length > 0
+                ? 
+                <EditTable 
+                        tds = {state.packagesList}
+                        ths = {state.packagesList[0]}
+                        path = {apiRoutes.package.DELETE_PACKAGE}
+                        setState = {setState}
+                        param = {"packagesList"}
+                    />   
+                :
+                null    
+                }
                 </Row>
             </Container>
         </>

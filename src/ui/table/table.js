@@ -43,7 +43,6 @@ const Table = ({ headers, tds ,updateDB}) => {
                                     )
                                 })
                             }
-                            <td><MDBIcon icon="edit" onClick={() =>  handleEdit(index)} ></MDBIcon></td>
                             <td><MDBIcon icon="trash" ></MDBIcon></td>
                         </tr>
                     )

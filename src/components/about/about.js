@@ -14,6 +14,7 @@ const About = () => {
     const [state, setState] = useState({})
     const history = useHistory()
     useEffect(() => {
+        
         (async () => {
             try {
                 const response = await (new httpRequest(apiRoutes.about.GET_ABOUT)).get();
