@@ -10,10 +10,10 @@ import Rating from '../rating/rating'
 import { Form, Button, Col, Container, Row, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart.actions';
-
+import { useHistory } from 'react-router-dom';
 
 const Package = ({ packageItem, addItem }) => {
-    
+    const history = useHistory()
     const preperItem = (packageItem) => {
         packageItem.product_name = packageItem.package_name
         packageItem.images = [];
@@ -31,7 +31,7 @@ const Package = ({ packageItem, addItem }) => {
                 </MDBCardTitle>
             </MDBCardHeader>
             <MDBCardBody bgColor='dark'>
-                <MDBCardText className='border-dark shadow-2-strong'>
+                <MDBCardText className='border-dark shadow-2-strong lead h-4' >
                     {packageItem.description}
                 </MDBCardText>
                 <MDBListGroup flush>
@@ -56,7 +56,12 @@ const Package = ({ packageItem, addItem }) => {
                 <div className='d-flex justify-content-between w-100'>
                     <Button size='sm' variant='outline-dark' className="badge badge-pill badge-light " onClick={() => addItem(preperItem(packageItem))}>Buy now!! <MDBIcon fas icon="cart-plus" />
                     </Button>
-                     <Button size='sm' variant='outline-dark' className="badge badge-pill badge-light border-right-0 border-dark ">
+                     <Button size='sm' variant='outline-dark' className="badge badge-pill badge-light border-right-0 border-dark "
+                                onClick= { () => history.push({
+                                pathname: '/view-package',
+                                state: { packageItem}
+                                })}>
+                
                         See more
                         <MDBIcon far icon="eye" />
                     </Button>

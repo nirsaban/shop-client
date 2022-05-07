@@ -65,6 +65,10 @@
             {
                 "name": "price",
                 "type": "number"
+            },
+            {
+                "name": "videos",
+                "type": "file"
             }
         ],
         "title": "Create Package"

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CartIcon from '../../components/cart-icon/cart-icon.component';
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component';
 import { LinkContainer } from 'react-router-bootstrap'
-
+import {Navbar} from 'react-bootstrap'
 import {
     MDBContainer,
     MDBNavbar,
@@ -24,13 +24,20 @@ import { Link, animateScroll as scroll } from "react-scroll";
 const NavbarComponent = ({ routes, isLoggedIn, hidden, routesAdmin, handleLogout }) => {
     const [showBasic, setShowBasic] = useState(false);
     return (
-        <MDBNavbar expand='lg' light bgColor='light' >
+        <MDBNavbar expand='lg' light bgColor='dark' className='text-light bg-dark' >
             <MDBContainer fluid className='d-flex justify-content-between'>
-                <div>
-                    <LinkContainer to={"/"}>
-                        <MDBNavbarBrand href='#'> MABRUK ALIK</MDBNavbarBrand>
-                    </LinkContainer>
-                </div>
+            <LinkContainer to={"/"}>
+            <Navbar.Brand href="#">
+                <img
+                 src="/test.png"
+                 width="60"
+                 height="60%"
+                className="d-inline-block align-top rounded-circle"
+                alt="מברוכ עליכ לוגו"
+                />
+             </Navbar.Brand>
+             </LinkContainer>
+            
                 <div>
 
                     <MDBNavbarToggler
@@ -38,22 +45,23 @@ const NavbarComponent = ({ routes, isLoggedIn, hidden, routesAdmin, handleLogout
                         aria-expanded='false'
                         aria-label='Toggle navigation'
                         onClick={() => setShowBasic(!showBasic)}
+                        
                     >
                         <MDBIcon icon='bars' fas />
                     </MDBNavbarToggler>
 
                     <MDBCollapse navbar show={showBasic}>
-                        <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
+                        <MDBNavbarNav className ="bg-dark" expand="md" >
                             {routes.map((route, index) => {
                                 if (Array.isArray(route)) {
                                     let main = route.filter(x => x.main != null)[0]
                                     return (
                                         <MDBNavbarItem key={index}>
                                             <MDBDropdown >
-                                                <MDBDropdownToggle tag='a' className='nav-link'>
+                                                <MDBDropdownToggle tag='a' className='nav-link '>
                                                     {<i className={main.icon}>{isLoggedIn ? isLoggedIn.full_name.split(" ")[0] : main.main}</i>}
                                                 </MDBDropdownToggle>
-                                                <MDBDropdownMenu>
+                                                <MDBDropdownMenu >
                                                     {
                                                         route.map((r, index) => {
                                                             r = r.hasOwnProperty("switch") && isLoggedIn ? r.switch : r
@@ -66,16 +74,17 @@ const NavbarComponent = ({ routes, isLoggedIn, hidden, routesAdmin, handleLogout
                                                                     )
                                                                 } else {
                                                                     return (
-                                                                        <MDBDropdownItem key={index}>
+                                                                        <MDBDropdownItem key={index} >
                                                                             <Link
+                                                                                
                                                                                 to={r.name}
                                                                                 spy={true}
                                                                                 smooth={true}
                                                                                 offset={-70}
                                                                                 duration={500}
                                                                             >
-                                                                                <LinkContainer to={r.path}>
-                                                                                    <MDBDropdownLink >{r.name} <i className={r.icon} ></i></MDBDropdownLink>
+                                                                                <LinkContainer to={r.path} >
+                                                                                    <MDBDropdownLink>{r.name} <i className={r.icon} ></i></MDBDropdownLink>
                                                                                 </LinkContainer>
                                                                             </Link>
                                                                         </MDBDropdownItem>
@@ -135,7 +144,7 @@ const NavbarComponent = ({ routes, isLoggedIn, hidden, routesAdmin, handleLogout
                                     )
                                     : null
                             }
-                            <CartIcon />
+                            <CartIcon  className = "text-white"/>
                             {hidden ? null : <CartDropdown />}
 
                         </MDBNavbarNav>

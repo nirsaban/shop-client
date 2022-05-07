@@ -14,7 +14,6 @@ const About = () => {
     const [state, setState] = useState({})
     const history = useHistory()
     useEffect(() => {
-        
         (async () => {
             try {
                 const response = await (new httpRequest(apiRoutes.about.GET_ABOUT)).get();
@@ -40,7 +39,7 @@ const About = () => {
     return (
             <>
     <div id="caruselAbout">
-    <MDBCarousel showIndicators showControls fade >
+    <MDBCarousel showIndicators showControls fade className='about-section' >
       <MDBCarouselInner>
       {
           state?.images?.map((image,index) => {

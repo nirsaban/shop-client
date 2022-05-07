@@ -43,10 +43,9 @@ const Contact = () => {
     <p className="h2 text-center mb-4">כתבו לנו</p>
     <div className='d-flex justify-content-center '>
 
-    <div className='col-md-2 d-flex justify-content-center'>
-                 <FacebookLoginButton onClick={() => window.location.href ="https://www.facebook.com/%D7%9E%D7%91%D7%A8%D7%95%D7%A7-%D7%A2%D7%9C%D7%99%D7%9B%D6%BC-%D7%97%D7%99%D7%A0%D7%94-111882314674808/"}  className = "round-3 col-sm-3 rounded-circle text-center">  </FacebookLoginButton>
-                 <InstagramLoginButton onClick={() => window.location.href  = "https://instagram.com/mabruk_alik_hina?igshid=YmMyMTA2M2Y="} className = "round-3 col-sm-3 rounded-circle"> </InstagramLoginButton>
-   
+    <div className='d-flex'>
+                 <FacebookLoginButton onClick={() => window.location.href ="https://www.facebook.com/%D7%9E%D7%91%D7%A8%D7%95%D7%A7-%D7%A2%D7%9C%D7%99%D7%9B%D6%BC-%D7%97%D7%99%D7%A0%D7%94-111882314674808/"}  className = "rounded-circle text-center">  </FacebookLoginButton>
+                 <InstagramLoginButton onClick={() => window.location.href  = "https://instagram.com/mabruk_alik_hina?igshid=YmMyMTA2M2Y="} className = "text-center rounded-circle"> </InstagramLoginButton>
     </div>
     </div>
     <div className="grey-text">
@@ -68,18 +67,18 @@ const Contact = () => {
     </MDBCol>
     </MDBRow>
     <FloatingWhatsApp
-      phoneNumber='0525937260'
+      phoneNumber='+972525937260'
       allowClickAway
-      onClick =  { () =>  window.location.href = "https://wa.link/yb6o11"}
+      styles={{zIndex:'100000'}}
       notification
       notificationSound
       notificationDelay={30000}
       darkMode
-      defaultMessage={"היי יש לי שאלה :)"}ת
+      defaultMessage={"היי יש לי שאלה :)"}
       accountName=" מברוכ עליכ"
-    placeholder='כתוב.י לנו משהו ☺'
-    chatMessage = "אנחנו כאן לשירותך"
-    statusMessage = {"Typically replies within 1/2 hour"}
+      placeholder='כתוב.י לנו משהו ☺'
+     chatMessage = "אנחנו כאן לשירותך"
+     statusMessage = {"Typically replies within 1/2 hour"}
 
     />
     </Container>

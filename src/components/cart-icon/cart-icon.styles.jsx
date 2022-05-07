@@ -18,7 +18,7 @@ CartContainer.displayName = 'CartContainer';
 export const ShoppingIcon = styled(ShoppingIconSVG)`
   width: 24px;
   height: 24px;
-  color:"black !important"
+  color:"white !important"
 `;
 
 export const ItemCountContainer = styled.span`
@@ -26,6 +26,6 @@ export const ItemCountContainer = styled.span`
   font-size: 10px;
   font-weight: bold;
   bottom: 12px;
-  color:black;
+  color:white;
 `;
 ItemCountContainer.displayName = 'ItemCountContainer';

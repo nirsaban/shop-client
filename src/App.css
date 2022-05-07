@@ -272,6 +272,21 @@ main {
     }
 }
 
-.carousel {
-    height: 40vh;
+.button-card {
+    border: none !important;
+    padding: 0.2rem !important;
+    font-size: 1.0 !important;
+}
+
+.about-section {
+    height: 60vh;
+}
+
+.nav-link,
+.navbar-toggler {
+    color: white !important;
+}
+
+.footer {
+    background-color: black !important;
 }

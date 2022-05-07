@@ -42,9 +42,8 @@ const Package = ({ match }) => {
 
     }, [edit])
     const handleChange = (e) => {
-        const { name, value } = e.target
-
-        setState(p => ({ ...p, [name]: value }))
+        const { name, value, files } = e.target ? e.target : e
+        setState(p => ({ ...p, [name]: name == 'videos' ? files : value }))
     }
     const handleChangeSelect = (value, name) => {
         let productIds = value.map(({ value }) => value)
@@ -59,8 +58,20 @@ const Package = ({ match }) => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        var formData = new FormData();
+        for (const key of Object.keys(state.videos)) {
+            formData.append('videos', state.videos[key])
+        }
+        for (let i in state) {
+            if(!i.includes("List") && i != 'products')
+            formData.append(i, state[i])
+        }
+        for (const key of Object.keys(state.products)) {
+            formData.append('products', state.products[key])
+        }
+    
         try {
-            const response = await (new httpRequest(apiRoutes.package.CREATE_PACKAGE).post(state))
+            const response = await (new httpRequest(apiRoutes.package.CREATE_PACKAGE).postForm(formData))
             setState(p => ({ ...p, ["error"]: '',packagesList:response.data.result }))
         } catch (error) {
             setState(p => ({ ...p, ["error"]: error.response.data }))
